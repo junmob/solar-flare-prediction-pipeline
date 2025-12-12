@@ -1,0 +1,81 @@
+# --- 1. Data Ingestion (NASA/NOAA 数据源) ---
+
+# SunPy 是核心库，[all] 确保安装 drms (JSOC) 和 zeep (SOAP) 等所有下载器
+sunpy[all]
+
+# 专门用于处理 FITS (Flexible Image Transport System) 格式的科学图片
+astropy
+
+# 用于处理 HTTP 请求 (如获取 NOAA 的 JSON 数据)
+requests
+
+
+
+# --- 2. Data Processing (数据处理 & ETL) ---
+
+# Python 的 Spark 接口
+pyspark==3.4.0
+
+# 本地数据处理 (Streamlit 或简单脚本需要)
+pandas
+numpy
+
+# 图片处理 (裁剪、归一化)，headless 版本适合服务器/Docker 环境
+opencv-python-headless
+
+# 简单的机器学习模型 (Random Forest / XGBoost)
+scikit-learn
+
+
+
+# --- 3. Storage & Database (数据库 & 存储) ---
+
+# ClickHouse 的 Python 驱动 (TCP 协议，性能最好)
+clickhouse-driver
+
+# 可选：如果你用 Pandas 直接写 ClickHouse，这个库也很方便
+clickhouse-connect
+
+# MinIO (S3) 的官方客户端
+minio
+
+# 让 Pandas/Dask 可以像操作本地文件一样操作 S3/MinIO
+s3fs
+
+
+
+# --- 4. Orchestration (调度 - IDE支持用) ---
+
+# 虽然 Airflow 主要跑在 Docker 里，但你在本地写代码需要自动补全
+apache-airflow
+
+# Airflow 的 Spark 插件
+apache-airflow-providers-apache-spark
+
+# Airflow 的 HTTP 插件
+apache-airflow-providers-http
+
+
+
+# --- 5. Web UI & Visualization (展示层) ---
+
+# 你的 Dashboard
+streamlit
+
+# 画图库 (在 Streamlit 里画趋势图)
+plotly
+matplotlib
+
+
+
+# --- 6. Data Quality & DevOps (面试加分项) ---
+
+# 数据质量检查 (在 Spark 任务里检查数据是否合规)
+great_expectations
+
+# 代码格式化 (CI/CD 环节用)
+black
+flake8
+
+# 单元测试
+pytest

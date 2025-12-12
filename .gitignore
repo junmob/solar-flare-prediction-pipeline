@@ -1,0 +1,17 @@
+# VSCode settings
+.vscode/
+
+# Python environments
+venv/
+.venv/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+.Trash-0/
+
+# Python cache
+__pycache__/
+
+# Data folder
+data/
+!data/ .keep
