@@ -1,0 +1,43 @@
+# ==========================================
+# 1. Airflow Providers (Integrations)
+# ==========================================
+
+# Core Airflow plugin for Apache Spark integration.
+# CRITICAL: Pinned to 4.11.3. Version 5.x requires Airflow 2.11+, which causes conflicts with the current Airflow 2.10.x.
+
+apache-airflow-providers-apache-spark==4.11.3
+
+# Airflow plugin for Amazon Web Services (AWS).
+# Required for connecting to MinIO because MinIO uses the AWS S3 protocol.
+
+apache-airflow-providers-amazon
+
+# Third-party Airflow plugin for ClickHouse.
+# Enables the use of ClickHouseOperator to execute SQL queries directly within DAGs.
+
+airflow-clickhouse-plugin
+
+
+# ==========================================
+# 2. Core Processing (Spark Engine)
+# ==========================================
+
+# Python API for Apache Spark.
+# CRITICAL: The version must strictly match the Spark version running in the spark-master/spark-worker containers (3.5.7).
+
+pyspark==3.5.7
+
+
+# ==========================================
+# 3. Database & Storage Drivers (Low-level)
+# ==========================================
+
+# Native Python driver for ClickHouse.
+# A dependency for airflow-clickhouse-plugin and used in custom Python scripts for high-performance data transfer.
+
+clickhouse-driver
+
+# Pythonic file system interface for S3.
+# Built on top of boto3, it allows libraries like Pandas or Dask to read/write from MinIO/S3 as if they were local files.
+
+s3fs

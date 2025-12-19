@@ -1,11 +1,11 @@
 FROM python:3.11-bullseye AS spark-base
 
-    ARG SPARK_VERSION=3.4.0
+    ARG SPARK_VERSION=3.5.7
 
     # Install tools required by the OS
     RUN apt-get update && \
         apt-get install -y --no-install-recommends \
-            openjdk-11-jdk \
+            openjdk-17-jdk \
             sudo \
             curl \
             vim \
@@ -19,7 +19,7 @@ FROM python:3.11-bullseye AS spark-base
 
     # Setup the directories for our Spark installations and 
     ENV SPARK_HOME=${SPARK_HOME:-"/opt/spark"}
-    ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+    ENV JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
     
     # Setup Spark related environment variables
     ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/sbin:${SPARK_HOME}/bin:${PATH}"
@@ -28,7 +28,7 @@ FROM python:3.11-bullseye AS spark-base
     WORKDIR ${SPARK_HOME}
 
     # Download and install Spark in SPARK_HOME directory
-    RUN curl https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz -o spark-${SPARK_VERSION}-bin-hadoop3.tgz \
+    RUN curl -fL https://downloads.apache.org/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop3.tgz -o spark-${SPARK_VERSION}-bin-hadoop3.tgz \
     && tar xvzf spark-${SPARK_VERSION}-bin-hadoop3.tgz --directory /opt/spark --strip-components 1 \
     && rm -rf spark-${SPARK_VERSION}-bin-hadoop3.tgz
 
@@ -37,11 +37,11 @@ FROM python:3.11-bullseye AS spark-base
 FROM spark-base AS pyspark-base
 
     # Install python deps
-    COPY requirements/requirements.txt .
-    RUN pip3 install -r requirements.txt
+    COPY requirements/requirements.in .
+    RUN pip3 install --no-cache-dir -r requirements.in
 
     # Copy the default configurations into $SPARK_HOME/conf
-    COPY conf/spark-defaults.conf "$SPARK_HOME/conf"
+    COPY conf/spark-defaults.conf "${SPARK_HOME}/conf"
 
     # Must do if pip install pyspark or exists in requirement.in
     ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH

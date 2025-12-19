@@ -1,0 +1,48 @@
+# ==========================================
+# 1. Data Ingestion (NASA/NOAA Data Sources)
+# ==========================================
+sunpy[all]                  # Core solar physics library (includes drms, zeep)
+astropy                     # FITS image processing and astronomical calculations
+requests                    # Standard HTTP library for API calls
+beautifulsoup4              # Parsing HTML/XML for web scraping
+
+# ==========================================
+# 2. Data Processing (ETL & ML)
+# ==========================================
+pyspark==3.5.7              # Apache Spark Python API (Matches Cluster Version)
+pandas                      # Local data manipulation
+numpy<2.0.0                 # Numerical computing (pinned for compatibility)
+scipy                       # Scientific computing utilities
+scikit-learn                # Classical Machine Learning (Random Forest, XGBoost)
+opencv-python-headless      # Image processing (Server/Docker optimized)
+
+# ==========================================
+# 3. Storage & Database (Connectors)
+# ==========================================
+clickhouse-connect          # Driver for ClickHouse database
+boto3                       # AWS SDK for Python (S3 operations)
+s3fs                        # Filesystem interface for S3/MinIO
+
+# ==========================================
+# 4. Orchestration (Local IDE Support Only)
+# ==========================================
+# NOTE: Keep commented out in Spark Docker to avoid conflicts.
+# apache-airflow
+# apache-airflow-providers-apache-spark
+# apache-airflow-providers-http
+
+# ==========================================
+# 5. Web UI & Visualization (Dashboard)
+# ==========================================
+streamlit                   # Interactive data dashboard framework
+plotly                      # Interactive charting library
+matplotlib                  # Static plotting library
+seaborn                     # Statistical data visualization
+
+# ==========================================
+# 6. Data Quality & DevOps (Development)
+# ==========================================
+great_expectations          # Data validation and documentation
+pytest                      # Unit testing framework
+black                       # Code formatter
+flake8                      # Linter for style guide enforcement

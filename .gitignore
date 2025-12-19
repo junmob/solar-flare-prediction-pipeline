@@ -11,7 +11,20 @@ venv/
 
 # Python cache
 __pycache__/
+*.pyc
+*.py[cod]
 
 # Data folder
-data/
-!data/ .keep
+data/*
+!data/.gitkeep
+
+
+!spark/.env.spark
+
+
+.env
+!.env.example
+
+
+airflow/logs/*
+!airflow/logs/.gitkeep

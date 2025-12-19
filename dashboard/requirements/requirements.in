@@ -1,0 +1,74 @@
+# ==========================================
+# 1. Web Framework & Core (Dashboard Engine)
+# ==========================================
+
+# The core framework for building the interactive data dashboard.
+
+streamlit
+
+# File system monitoring utility.
+# Required by Streamlit to auto-reload the app when you modify code during development.
+
+watchdog
+
+
+# ==========================================
+# 2. Data Manipulation (Data Processing)
+# ==========================================
+
+# Essential for handling structured data (DataFrames) before visualization.
+
+pandas
+
+# Fundamental package for numerical computing.
+# CRITICAL: Pinned to <2.0.0 to ensure compatibility with Pandas and other libraries that haven't migrated to NumPy 2.0 yet.
+
+numpy<2.0.0
+
+
+# ==========================================
+# 3. Visualization (Charts & Graphs)
+# ==========================================
+
+# Primary library for interactive charts (zoom, hover, filter).
+# Best for displaying time-series data of solar flares.
+
+plotly
+
+# Foundation library for static plotting.
+
+matplotlib
+
+# High-level interface for drawing attractive and informative statistical graphics (based on matplotlib).
+
+seaborn
+
+
+# ==========================================
+# 4. Data Sources (Database & Storage)
+# ==========================================
+
+# Official driver to connect Streamlit to the ClickHouse OLAP database.
+# Used for querying aggregated metrics (e.g., average flare intensity).
+
+clickhouse-connect
+
+# Official Python client for MinIO Object Storage.
+# Used to retrieve raw files or images (e.g., solar images) directly from the storage bucket.
+
+minio
+
+# Standard library for making HTTP requests.
+# Useful if the dashboard needs to call external APIs or check health endpoints.
+
+requests
+
+
+# ==========================================
+# 5. Utilities (Image Processing)
+# ==========================================
+
+# Python Imaging Library (PIL).
+# Used to process and display images (e.g., rendering Solar Flare images fetched from MinIO) in the dashboard.
+
+pillow

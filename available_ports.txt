@@ -1,0 +1,48 @@
+
+-----------------------------------------------------------
+Spark Master
+
+    localhost:9090      # Master UI
+    - 4041              # Spark Driver
+    - 7077              # Connection with Workers
+
+-----------------------------------------------------------
+Spark History Server
+
+    localhost:18080     # Spark History Server UI
+
+
+-----------------------------------------------------------
+Jupyter Notebook
+
+    localhost:8888      # Jupyter Notebook
+    - 4040              # Spark Driver
+
+
+-----------------------------------------------------------
+MinIO
+
+    - 9000              # API for Spark and Jupyter
+    localhost:9001      # Console UI
+
+
+-----------------------------------------------------------
+Clickhouse
+
+    - 8123              # HTTP Port   (Python/Streamlit)
+    - 9009              # Native Port (DBeaver/CLI)
+
+
+-----------------------------------------------------------
+Streamlit
+
+    localhost:8501      # Web App
+
+
+-----------------------------------------------------------
+Airflow
+
+    localhost:8085      # Airflow Web UI
+
+
+-----------------------------------------------------------
